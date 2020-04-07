@@ -15,9 +15,9 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    # (1) source: code for underline text taken from source "stackoverflow"
+    # (1) source: code for underlining text taken from source "stackoverflow"
     print('\033[4m' + '\nHello! Let\'s explore some US bikeshare data!' + '\033[0m')
-    
+
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     # (2) source: method for while loop taken from "stackoverflow"
     while True:
@@ -37,7 +37,7 @@ def get_filters():
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        day = input('Please select a weekday you want to analyze data for (all, monday, tuesday, ... sunday): ')       
+        day = input('Please select a weekday you want to analyze data for (all, monday, tuesday, ... sunday): ')
         if day.lower() not in ['all','monday','tuesday','wednesday','thursday','friday','saturday','sunday']:
             print('Fault: please enter the weekday as shown above...')
         else:
@@ -73,7 +73,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month)+1
-    
+
         # filter by month to create the new dataframe
         df = df.loc[df['month'] == month]
 
@@ -81,9 +81,9 @@ def load_data(city, month, day):
     if day.lower() != 'all':
         # filter by day of week to create the new dataframe
         df = df.loc[df['day_of_week'] == day.title()]
-    
+
     return df
-    
+
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -146,13 +146,13 @@ def trip_duration_stats(df):
         minutes = time // 60
         time %= 60
         seconds = time
-        
+
         return ('{} days {} hours {} mins {} sec'.format(day,hour,minutes,seconds))
-    
+
     # calculate, transform and display total travel time
     total_tt = int(df['Trip Duration'].sum())
-    print('The total travel time is:', time_calculation(total_tt)) 
-    
+    print('The total travel time is:', time_calculation(total_tt))
+
     # calculate, transform and display mean travel time
     avg_tt = int(df['Trip Duration'].mean())
     print('The average travel time is:', time_calculation(avg_tt))
@@ -176,7 +176,7 @@ def user_stats(df):
         df['Gender'].fillna('Unknown', inplace = True)
         gender = df['Gender'].value_counts()
         print('The gender types are: \n{}\n'.format(gender))
-            
+
     # Display earliest, most recent, and most common year of birth
         earliest_BY = int(df['Birth Year'].min())
         mostrecent_BY = int(df['Birth Year'].max())
@@ -187,15 +187,15 @@ def user_stats(df):
         pass
     # Avoid "Keyerror" due to missing birth year and gender data for Washington
     except KeyError:
-        print('Unfortunately, there is no Gender/Birth Year data for Washington...')    
+        print('Unfortunately, there is no Gender/Birth Year data for Washington...')
         pass
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def trip_data(df):
     """Displays concrete trip data as examples."""
-    
+
     print('\nPulling ' + '\033[4m' + 'individual trip data for you' + '\033[0m' + '...\n')
     x = 5
     while True:
@@ -204,7 +204,7 @@ def trip_data(df):
         moredata = input('\nWould you like to see more individual trip data? Enter \'yes\' or \'no\'.')
         if moredata.lower() != 'yes':
             break
-            
+
 
 def main():
     while True:
@@ -215,7 +215,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         trip_data(df)
-                
+
         restart = input('\nWould you like to restart? Enter \'yes\' or \'no\'.\n')
         if restart.lower() != 'yes':
             break
