@@ -5,6 +5,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+months = ['all','january','february','march','april','may','june']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -29,7 +31,7 @@ def get_filters():
     # get user input for month (all, january, february, ... , june)
     while True:
         month = input('Please select a month you want to analyze data for (all, january, february, ... , june): ')
-        if month.lower() not in ['all','january','february','march','april','may','june']:
+        if month.lower() not in months:
             print('Fault: please enter the month as shown above...')
         else:
             break
@@ -70,8 +72,7 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month.lower() != 'all':
         # use the index of the months list to get the corresponding int
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month)+1
+        month = months.index(month)
 
         # filter by month to create the new dataframe
         df = df.loc[df['month'] == month]
