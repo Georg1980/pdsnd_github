@@ -18,7 +18,7 @@ def get_filters():
     # (1) source: code for underlining text taken from source "stackoverflow"
     print('\033[4m' + '\nHello! Let\'s explore some US bikeshare data!' + '\033[0m')
 
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # get user input for city (chicago, new york city, washington).
     # (2) source: method for while loop taken from "stackoverflow"
     while True:
         city = input('Please enter city name you want to analyze data for (chicago,new york city,washington): ')
