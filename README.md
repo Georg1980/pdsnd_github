@@ -5,7 +5,7 @@ The bikeshare project incl. this README file have been created on April 7th, 202
 Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+The biskeshare project offers the possibility for the user to analyze Bikesharing data from 3 major cities using various filters and criteria.
 
 ### Files used
 Include the files used
